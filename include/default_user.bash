@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-addgroup --quiet --gid "32767" "herokuishuser" && \
+addgroup --gid "32767" "herokuishuser" > /dev/null && \
 adduser \
     --shell /bin/bash \
     --disabled-password \
@@ -9,6 +9,5 @@ adduser \
     --uid "32767" \
     --gid "32767" \
     --gecos '' \
-    --quiet \
     --home "/app" \
     "herokuishuser"

@@ -72,7 +72,7 @@ randomize-unprivileged() {
 	local userid="$((RANDOM+1000))"
 	local username="u${userid}"
 
-	addgroup --quiet --gid "$userid" "$username"
+	addgroup --gid "$userid" "$username" > /dev/null
 	adduser \
 		--shell /bin/bash \
 		--disabled-password \
@@ -81,9 +81,8 @@ randomize-unprivileged() {
 		--uid "$userid" \
 		--gid "$userid" \
 		--gecos '' \
-		--quiet \
 		--home "$app_path" \
-		"$username"
+		"$username" > /dev/null
 
 	unprivileged_user="$username"
 	unprivileged_group="$username"
